@@ -1,5 +1,3 @@
-
-
 ### BGP
 https://ipinfo.io/AS19905
 https://bgp.he.net/AS19905
@@ -58,6 +56,12 @@ dnsenum https://github.com/fwaeytens/dnsenum
 
 nikto https://cirt.net/Nikto2
 nikto -h <target url>
+
+
+### Bot Testing
+
+wget https://www.gnu.org/software/wget/
+wget -r <target url>
 
 ### Rate Control Testing
 
